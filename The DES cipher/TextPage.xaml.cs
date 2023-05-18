@@ -73,7 +73,7 @@ namespace The_DES_cipher
             {
                 Des.IV = textBoxIV.Text;
             }
-            _lastResult = Des.Encryption(textBoxInput.Text.StringToBits(Des.Encoding));
+            _lastResult = Des.Encryption(BitExtensions.StringToBits(textBoxInput.Text, Des.Encoding));
             SetOutput();
             textBox_PreviewTextInput(sender, null);
         }

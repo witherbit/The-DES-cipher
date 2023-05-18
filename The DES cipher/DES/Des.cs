@@ -58,7 +58,8 @@ namespace The_DES_cipher.DES
                                                                 // C без .ToArray() для каждой итерации, то абсолютно
                                                                 // во всех ключах могут быть однаковые данные, чего быть не должно
                 _roundKeys[i].D0 = D.ToArray();                 // запись в объект с ключами данных о Di-1
-                D = D.LeftShift(Tables.Shift[i]);               // циклический сдвиг влево на основании таблицы сдвига в зависимотси от раунда
+                C = BitExtensions.LeftShift(C, Tables.Shift[i]);// циклический сдвиг влево на основании таблицы сдвига в зависимотси от раунда
+                D = BitExtensions.LeftShift(D, Tables.Shift[i]);
                 _roundKeys[i].C = C.ToArray();                  // запись в объект с ключами данных о Ci
                 _roundKeys[i].D = D.ToArray();                  // запись в объект с ключами данных о Di
                 Array.Copy(C, 0, roundkey, 0, C.Length);
@@ -72,14 +73,14 @@ namespace The_DES_cipher.DES
         {
             byte[] rowInBits = { sboxCellInput[0], sboxCellInput[5] };  // представляет значение строки в двоичном двухбитном формате
             byte[] colInBits = { sboxCellInput[1], sboxCellInput[2], sboxCellInput[3], sboxCellInput[4] };  // представляет значение столбца в двоичном четырехбитном формате
-            byte[] rowInByte = rowInBits.BitsToByte();                  // конвертирует массив бит в байты
-            byte[] colInByte = colInBits.BitsToByte();
+            byte[] rowInByte = BitExtensions.BitsToByte(rowInBits);                  // конвертирует массив бит в байты
+            byte[] colInByte = BitExtensions.BitsToByte(colInBits);
             int row = (int)(Convert.ToDecimal(rowInByte[0]));           // получает числовое значение строки для навигации по S блоку
             int col = (int)(Convert.ToDecimal(colInByte[0]));           // получает числовое значение столбца для навигации по S блоку
             int temp = sbox[row, col];                                  // хранит временное значение числа из S блока
-            byte[] b = temp.IntToBytes();                               // конвертирует число в массив байт
+            byte[] b = BitExtensions.IntToBytes(temp);                               // конвертирует число в массив байт
             byte[] sboxCellOutput = new byte[4];
-            Array.Copy(b.ByteToBits().ToArray(), 28, sboxCellOutput, 0, 4);
+            Array.Copy(BitExtensions.ByteToBits(b).ToArray(), 28, sboxCellOutput, 0, 4);
             return sboxCellOutput;                                      // возвращает B'i
         }
         private void SetBlocksOfPlainText(byte[] plain) // метод, разбивающий открытый текст на блоки
@@ -130,15 +131,15 @@ namespace The_DES_cipher.DES
                     temp[j] = (byte)ciphed[j + (i * 8)];        // каждый байт шифр текста копируется в массив temp
                 }
                 Array.Reverse(temp);                            // массив переворачивается, это нужно для правильного отображения массива бит
-                _blocks[i] = (temp.ByteToBits()).ToArray();     // блок шифр текста в двоичном коде записывается в массив блоков
+                _blocks[i] = (BitExtensions.ByteToBits(temp)).ToArray();     // блок шифр текста в двоичном коде записывается в массив блоков
             }
         }
         public byte[] Encryption(byte[] plainText)  // метод, шифрующий открытый текст
         {
-            _key = Key.StringToBits(Encoding.ASCII);    // ключ конвертируется из строки в массив байт
+            _key = BitExtensions.StringToBits(Key, Encoding.ASCII);    // ключ конвертируется из строки в массив байт
             if (Mode == Mode.CBC)                       // проверка, используется ли режим шифрования CBC
             {
-                _iv = IV.StringToBits(Encoding);        // если используется, то конвертируется вектор инициализации
+                _iv = BitExtensions.StringToBits(IV, Encoding);        // если используется, то конвертируется вектор инициализации
             }
             GenerateKeys();                             // генерируются раундовые ключи
             SetBlocksOfPlainText(plainText);            // открытый текст разбивается на блоки
@@ -221,13 +222,12 @@ namespace The_DES_cipher.DES
                 LRpermutation = Permutation(LR, Tables.IPInverse);  // конечная перестановка IP inverse, которая является инверсией функции перестановки IP
                 _blocksTable[i].IPInverse = LRpermutation.ToArray();
                 temp = BitExtensions.BitsToByte(LRpermutation);     // запись во временную переменную массива байт, конвертированного из массива бит
-
                 Array.Reverse(temp);                                // временная переменная разворачивается,
                                                                     // так как двоичный код подразумевает чтение справа на лево,
                                                                     // а десятичные числа читаются слева на право.
 
                 if (output == null)                                 // если массив для вывода пустой, то
-                    output = temp.ToArray();                        // присваивает значение массива temp к output
+                    output = temp;                                  // присваивает значение массива temp к output
                 else                                                // иначе
                     output = output.Concat(temp).ToArray();         // соединяет уже существующие блоки с еще одним
             }

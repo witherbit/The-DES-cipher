@@ -59,29 +59,6 @@ namespace The_DES_cipher.DES
             }
             return result;  // возвращает массив байт
         }
-        
-        public static int[] BitsToInt(this bool[] bits)
-        {
-            Array.Reverse(bits);
-            int bytes = bits.Length / 32;
-            if ((bits.Length % 32) != 0) bytes++;
-            int[] result = new int[bytes];
-            int bitIndex = 0, byteIndex = 0;
-            for (int i = 0; i < bits.Length; i++)
-            {
-                if (bits[i])
-                {
-                    result[byteIndex] |= (int)(((int)1) << bitIndex);
-                }
-                bitIndex++;
-                if (bitIndex == 32)
-                {
-                    bitIndex = 0;
-                    byteIndex++;
-                }
-            }
-            return result;
-        }
 
         public static byte[] IntToBits(this int n)
         {

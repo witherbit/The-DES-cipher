@@ -12,7 +12,7 @@ namespace The_DES_cipher.DES
     {
         public static string Encrypt(this Des provider, string plaintext)
         {
-            return Convert.ToBase64String(provider.Encryption(plaintext.StringToBits(provider.Encoding)));
+            return Convert.ToBase64String(provider.Encryption(BitExtensions.StringToBits(plaintext, provider.Encoding)));
         }
         public static string Decrypt(this Des provider, string ciphertext)
         {
@@ -29,9 +29,9 @@ namespace The_DES_cipher.DES
         {
             var str = "";
             if(reverse)
-                bytes = bytes.BitsToByte().Reverse().ToArray();
+                bytes = BitExtensions.BitsToByte(bytes).Reverse().ToArray();
             else
-                bytes = bytes.BitsToByte();
+                bytes = BitExtensions.BitsToByte(bytes);
             foreach (byte b in bytes)
                 str += Convert.ToString(b, 16) + separator;
             return str;
