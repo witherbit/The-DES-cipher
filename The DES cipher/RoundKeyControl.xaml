@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="The_DES_cipher.RoundKeyControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:The_DES_cipher"
+             FontFamily="Cascadia Code"
+             FontSize="13"
+             mc:Ignorable="d" 
+             d:DesignHeight="150" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="arrowRoundLeft" Background="#ffdb67" Width="2" Grid.RowSpan="4" Margin="80 0 0 0" HorizontalAlignment="Left"/>
+        <Grid x:Name="arrowRoundRight" Background="#ffdb67" Width="2" Grid.Column="1" Grid.RowSpan="4" Margin="0 0 80 0" HorizontalAlignment="Right"/>
+        <Grid Background="#ffdb67" Width="2" Grid.Row="1" Grid.RowSpan="2" Margin="0 10 80 10" HorizontalAlignment="Right"/>
+        <Grid Background="#ffdb67" Width="2" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Margin="80 10 0 10" HorizontalAlignment="Left"/>
+        <Grid Background="#ffdb67" Width="2" Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="0 10 0 10"/>
+        <Grid Grid.Row="0" Grid.Column="0" Margin="7" Background="#191919">
+            <Border BorderBrush="White" BorderThickness="1" CornerRadius="5"/>
+            <TextBlock Margin="3 0" x:Name="rC0" Text="C0" Foreground="#818181" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="15"/>
+            <TextBlock x:Name="C0"  Text="N/A" Foreground="#dfdfdf" VerticalAlignment="Center" HorizontalAlignment="Center" PreviewMouseLeftButtonDown="Copy"/>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="1" Margin="7"  Background="#191919">
+            <Border BorderBrush="White" BorderThickness="1" CornerRadius="5"/>
+            <TextBlock Margin="3 0" x:Name="rD0" Text="D0" Foreground="#818181" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="15"/>
+            <TextBlock x:Name="D0" Text="N/A" Foreground="#dfdfdf" VerticalAlignment="Center" HorizontalAlignment="Center" PreviewMouseLeftButtonDown="Copy"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="0" Margin="7"  Background="#191919">
+            <Border BorderBrush="White" BorderThickness="1" CornerRadius="5"/>
+            <TextBlock Margin="3 0" x:Name="rC" Text="Сдвиг > C1" Foreground="#818181" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="15"/>
+            <TextBlock x:Name="C"  Text="N/A" Foreground="#dfdfdf" VerticalAlignment="Center" HorizontalAlignment="Center" PreviewMouseLeftButtonDown="Copy"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1" Margin="7"  Background="#191919">
+            <Border BorderBrush="White" BorderThickness="1" CornerRadius="5"/>
+            <TextBlock Margin="3 0" x:Name="rD" Text="Сдвиг > D1" Foreground="#818181" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="15"/>
+            <TextBlock x:Name="D" Text="N/A" Foreground="#dfdfdf" VerticalAlignment="Center" HorizontalAlignment="Center" PreviewMouseLeftButtonDown="Copy"/>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="100 7"  Background="#191919">
+            <Border BorderBrush="White" BorderThickness="1" CornerRadius="5"/>
+            <TextBlock Margin="3 0" x:Name="rCD" Text="CD0" Foreground="#818181" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="15"/>
+            <TextBlock x:Name="PrePC2" Text="N/A" Foreground="#dfdfdf" VerticalAlignment="Center" HorizontalAlignment="Center" PreviewMouseLeftButtonDown="Copy"/>
+        </Grid>
+        <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="100 7"  Background="#191919">
+            <Border BorderBrush="White" BorderThickness="1" CornerRadius="5"/>
+            <TextBlock Margin="3 0" x:Name="rPC2" Text="PC2 [Ki]" Foreground="#818181" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="15"/>
+            <TextBlock x:Name="PC2" Text="N/A" Foreground="#54ff98" VerticalAlignment="Center" HorizontalAlignment="Center" PreviewMouseLeftButtonDown="Copy"/>
+        </Grid>
+    </Grid>
+</UserControl>

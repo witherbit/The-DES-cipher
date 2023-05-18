@@ -1,0 +1,89 @@
+﻿<UserControl x:Class="The_DES_cipher.RoundBlockControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:The_DES_cipher"
+             mc:Ignorable="d" 
+             FontFamily="Cascadia Code"
+             FontSize="13"
+             d:DesignHeight="300" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="#ffdb67" Width="2" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Margin="0 40 0 40" HorizontalAlignment="Center"/>
+        <Grid Background="#ffdb67" Width="2" Grid.Row="0" Grid.Column="1" Grid.RowSpan="7" Margin="0 40 20 0" HorizontalAlignment="Right"/>
+        <Grid Background="#ffdb67" Height="2" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="80 0 20 0" VerticalAlignment="Bottom"/>
+        <Grid Background="#ffdb67" Height="2" Grid.Row="2" Grid.Column="1" Margin="0 0 60 0" VerticalAlignment="Center"/>
+        <Grid Background="#ffdb67" Height="2" Grid.Row="1" Grid.Column="1" Margin="0 0 60 0" VerticalAlignment="Center"/>
+        <Grid Background="#ffdb67" Width="2" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Margin="0 25 60 25" HorizontalAlignment="Right"/>
+        <Grid Background="#e33c68" Height="2" Grid.Row="3" Grid.Column="1" Margin="0 0 60 0" VerticalAlignment="Center"/>
+        <Grid Background="#e33c68" Width="2" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" Margin="0 25 60 25" HorizontalAlignment="Right"/>
+        <Grid Background="#ffdb67" Width="2" x:Name="arrowLeftTop" Grid.Row="0" Grid.Column="0" Margin="80 0 0 40" HorizontalAlignment="Left"/>
+        <Grid Background="#ffdb67" Width="2" x:Name="arrowRightTopWhite" Grid.Row="0" Grid.Column="1" Margin="0 0 80 40" HorizontalAlignment="Right"/>
+        <Grid Background="#3ce3b7" Width="2" x:Name="arrowRightTopGreen" Grid.Row="0" Grid.Column="1" Margin="0 0 40 40" HorizontalAlignment="Right"/>
+        <Grid Background="#ffdb67" Width="2" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="0 40 0 40" HorizontalAlignment="Center"/>
+
+
+        <Grid Grid.Row="2" Grid.Column="2" Height="30" Width="30" HorizontalAlignment="Right" Margin="0 0 46 0">
+            <Ellipse Stroke="#e33c68" StrokeThickness="2"/>
+            <Grid Height="2" Background="#e33c68"/>
+            <Grid Width="2" Background="#e33c68"/>
+        </Grid>
+        <Grid Background="#ffdb67" Width="2" Grid.Row="0" Grid.Column="0" Grid.RowSpan="7" Margin="60 40 0 40" HorizontalAlignment="Left"/>
+        <Grid Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="2" Height="30" Width="30" HorizontalAlignment="Left" Margin="46 0">
+            <Ellipse Stroke="#3ce3b7" StrokeThickness="2"/>
+            <Grid Height="2" Background="#3ce3b7"/>
+            <Grid Width="2" Background="#3ce3b7"/>
+        </Grid>
+        <Grid Background="#3ce3b7" Width="2" Grid.Row="3" Grid.Column="1" Grid.RowSpan="4" Margin="0 00 40 0" HorizontalAlignment="Right"/>
+        <Grid Background="#3ce3b7" Height="2" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="65 0 40 0"/>
+        
+        <Grid Grid.Row="0" Grid.Column="0" Margin="7" Background="#191919">
+            <Border BorderBrush="White" BorderThickness="1" CornerRadius="5"/>
+            <TextBlock Margin="3 0" x:Name="rL" Text="Li" Foreground="#818181" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="15"/>
+            <TextBlock x:Name="L"  Text="N/A" Foreground="#dfdfdf" VerticalAlignment="Center" HorizontalAlignment="Center" PreviewMouseLeftButtonDown="Copy"/>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="1" Margin="7"  Background="#191919">
+            <Border BorderBrush="White" BorderThickness="1" CornerRadius="5"/>
+            <TextBlock Margin="3 0" x:Name="rR" Text="Ri" Foreground="#818181" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="15"/>
+            <TextBlock x:Name="R" Text="N/A" Foreground="#dfdfdf" VerticalAlignment="Center" HorizontalAlignment="Center" PreviewMouseLeftButtonDown="Copy"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="100 7"  Background="#191919">
+            <Border BorderBrush="White" BorderThickness="1" CornerRadius="5"/>
+            <TextBlock Margin="3 0" Text="E/P" Foreground="#818181" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="15"/>
+            <TextBlock x:Name="EP" Text="N/A" Foreground="#dfdfdf" VerticalAlignment="Center" HorizontalAlignment="Center" PreviewMouseLeftButtonDown="Copy"/>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="100 7"  Background="#191919">
+            <Border BorderBrush="White" BorderThickness="1" CornerRadius="5"/>
+            <TextBlock Margin="3 0" x:Name="rK" Text="Ki" Foreground="#818181" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="15"/>
+            <TextBlock x:Name="K" Text="N/A" Foreground="#dfdfdf" VerticalAlignment="Center" HorizontalAlignment="Center" PreviewMouseLeftButtonDown="Copy"/>
+        </Grid>
+        <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="100 17 100 7"  Background="#191919">
+            <Border BorderBrush="White" BorderThickness="1" CornerRadius="5"/>
+            <TextBlock Margin="3 0" x:Name="rXOR" Text="B" Foreground="#818181" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="15"/>
+            <TextBlock x:Name="XOR" Text="N/A" Foreground="#dfdfdf" VerticalAlignment="Center" HorizontalAlignment="Center" PreviewMouseLeftButtonDown="Copy"/>
+        </Grid>
+        <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="100 7"  Background="#191919">
+            <Border BorderBrush="White" BorderThickness="1" CornerRadius="5"/>
+            <TextBlock Margin="3 0" Text="SBox" Foreground="#818181" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="15"/>
+            <TextBlock x:Name="SBox" Text="N/A" Foreground="#dfdfdf" VerticalAlignment="Center" HorizontalAlignment="Center" PreviewMouseLeftButtonDown="Copy"/>
+        </Grid>
+        <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="7 7 100 17"  Background="#191919">
+            <Border BorderBrush="White" BorderThickness="1" CornerRadius="5"/>
+            <TextBlock Margin="3 0" Text="P" Foreground="#818181" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="15"/>
+            <TextBlock x:Name="P" Text="N/A" Foreground="#dfdfdf" VerticalAlignment="Center" HorizontalAlignment="Center" PreviewMouseLeftButtonDown="Copy"/>
+        </Grid>
+    </Grid>
+</UserControl>

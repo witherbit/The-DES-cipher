@@ -1,0 +1,62 @@
+﻿<Page x:Class="The_DES_cipher.TextPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:The_DES_cipher"
+      FontFamily="Cascadia Code"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TextPage">
+
+    <Grid Background="#191919">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="65"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="1"/>
+            <ColumnDefinition Width="150"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="#3e3e3e" Grid.Column="2" Grid.RowSpan="4" Margin="0 10"/>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Ввод" Foreground="#818181" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Ключ" Foreground="#818181" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="IV" Foreground="#818181" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10"/>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Вывод" Foreground="#818181" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10"/>
+
+
+        <TextBox PreviewKeyDown="textBox_PreviewKeyUp" PreviewKeyUp="textBox_PreviewKeyUp" PreviewTextInput="textBox_PreviewTextInput" Grid.Row="0" Grid.Column="1" x:Name="textBoxInput" Background="#242424" Margin="10" AcceptsReturn="True" TextWrapping="Wrap" Foreground="#dfdfdf" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" BorderThickness="0"/>
+        <TextBox MaxLength="8" PreviewKeyDown="textBox_PreviewKeyUp" PreviewKeyUp="textBox_PreviewKeyUp" PreviewTextInput="textBox_PreviewTextInput" Grid.Row="1" Grid.Column="1" x:Name="textBoxPassword" Background="#242424" Margin="10" Foreground="#dfdfdf" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderThickness="0"/>
+        <TextBox PreviewKeyDown="textBox_PreviewKeyUp" PreviewKeyUp="textBox_PreviewKeyUp" PreviewTextInput="textBox_PreviewTextInput" Grid.Row="2" Grid.Column="1" x:Name="textBoxIV" Background="#242424" Margin="10" Foreground="#dfdfdf" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderThickness="0"/>
+        <TextBox PreviewKeyDown="textBox_PreviewKeyUp" PreviewKeyUp="textBox_PreviewKeyUp" PreviewTextInput="textBox_PreviewTextInput" Grid.Row="3" Grid.Column="1" x:Name="textBoxOutput" Background="#242424" Margin="10" AcceptsReturn="True" TextWrapping="Wrap" Foreground="#dfdfdf" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" BorderThickness="0" IsReadOnly="True" IsReadOnlyCaretVisible="True"/>
+
+        <StackPanel Grid.Row="0" Grid.Column="3" Grid.RowSpan="4">
+            <Button Background="Transparent" BorderThickness="1" BorderBrush="#bdffe7" Content="Назад" Foreground="#dfdfdf" Margin="5" Cursor="Hand" x:Name="buttonBack" Click="buttonBack_Click"/>
+            <Button Background="Transparent" BorderThickness="1" BorderBrush="#919cff" Content="Зашифровать" Foreground="#dfdfdf" Margin="5" Cursor="Hand" x:Name="buttonEncrypt" Click="buttonEncrypt_Click" IsEnabled="False"/>
+            <Button Background="Transparent" BorderThickness="1" BorderBrush="#919cff" Content="Расшифровать" Foreground="#dfdfdf" Margin="5" Cursor="Hand" x:Name="buttonDecrypt" Click="buttonDecrypt_Click"  IsEnabled="False"/>
+            <Button Background="Transparent" BorderThickness="1" BorderBrush="#ff9191" Content="Очистить поля" Foreground="#dfdfdf" Margin="5" Cursor="Hand" x:Name="buttonClear" Click="buttonClear_Click"/>
+            <ComboBox x:Name="comboBoxMode" SelectionChanged="comboBoxMode_SelectionChanged"  Margin="5" BorderBrush="#919cff">
+                <TextBlock Text="Режим ECB" Foreground="#dfdfdf"/>
+                <TextBlock Text="Режим CBC" Foreground="#dfdfdf"/>
+            </ComboBox>
+            <ComboBox x:Name="comboBoxEncoding" SelectionChanged="comboBoxEncoding_SelectionChanged"  Margin="5" BorderBrush="#919cff">
+                <TextBlock Text="ASCII" Foreground="#dfdfdf"/>
+                <TextBlock Text="UTF-8" Foreground="#dfdfdf"/>
+                <TextBlock Text="Unicode" Foreground="#dfdfdf"/>
+            </ComboBox>
+            <CheckBox Content="Вывод в Base64" Foreground="#dfdfdf" Margin="5" x:Name="checkBoxBytesOutput" Checked="checkBoxBytesOutput_Checked" Unchecked="checkBoxBytesOutput_Unchecked"/>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Grid.Column="3" VerticalAlignment="Bottom">
+            <Button Background="Transparent" BorderThickness="1" BorderBrush="#919cff" Content="Копировать вывод" FontSize="11" Foreground="#dfdfdf" Margin="5" Cursor="Hand" x:Name="buttonCopy" Click="buttonCopy_Click"  IsEnabled="False"/>
+            <CheckBox Content="Таблица в битах" Foreground="#dfdfdf" Margin="5" x:Name="checkBoxBitBytesTable" Checked="checkBoxBitBytesTable_Checked" Unchecked="checkBoxBitBytesTable_Unchecked"/>
+            <Button Background="Transparent" BorderThickness="1" BorderBrush="#ffed91" Content="Таблица ключей" FontSize="11" Foreground="#dfdfdf" Margin="5" Cursor="Hand" x:Name="buttonKeys" Click="buttonKeys_Click" IsEnabled="False"/>
+            <Button Background="Transparent" BorderThickness="1" BorderBrush="#ffed91" Content="Таблица блоков" FontSize="11" Foreground="#dfdfdf" Margin="5" Cursor="Hand" x:Name="buttonBlocks" Click="buttonBlocks_Click" IsEnabled="False"/>
+        </StackPanel>
+    </Grid>
+</Page>
