@@ -51,5 +51,8 @@
                 <TextBlock Text="Unicode" Foreground="#dfdfdf"/>
             </ComboBox>
         </StackPanel>
+        <ScrollViewer CanContentScroll="False" Grid.Row="4" Grid.ColumnSpan="2">
+            <StackPanel x:Name="uiFileList"/>
+        </ScrollViewer>
     </Grid>
 </Page>

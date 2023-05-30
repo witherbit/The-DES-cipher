@@ -99,7 +99,14 @@ namespace The_DES_cipher
                 {
                     Des.IV = textBoxIV.Text;
                 }
-                File.WriteAllBytes(sfd.FileName , Convert.FromBase64String(Des.Encrypt(Convert.ToBase64String(File.ReadAllBytes(textBoxFile.Text)))));
+                var inst = new DesProgress(Convert.ToBase64String(File.ReadAllBytes(textBoxFile.Text)), sfd.FileName, false, Des);
+                uiFileList.Children.Add(inst);
+                inst.OnStop += (s, ex) =>
+                {
+                    uiFileList.Children.Remove(inst);
+                };
+                inst.Start();
+                //File.WriteAllBytes(sfd.FileName , Convert.FromBase64String(Des.Encrypt(Convert.ToBase64String(File.ReadAllBytes(textBoxFile.Text)))));
             }
             catch (Exception ex)
             {
@@ -122,7 +129,15 @@ namespace The_DES_cipher
                 {
                     Des.IV = textBoxIV.Text;
                 }
-                File.WriteAllBytes(sfd.FileName, Convert.FromBase64String(Des.Decrypt(Convert.ToBase64String(File.ReadAllBytes(textBoxFile.Text)))));
+                var inst = new DesProgress(Convert.ToBase64String(File.ReadAllBytes(textBoxFile.Text)), sfd.FileName, true, Des);
+                uiFileList.Children.Add(inst);
+                inst.OnStop += (s, ex) =>
+                {
+                    uiFileList.Children.Remove(inst);
+                };
+                inst.Start();
+
+                //File.WriteAllBytes(sfd.FileName, Convert.FromBase64String(Des.Decrypt(Convert.ToBase64String(File.ReadAllBytes(textBoxFile.Text)))));
             }
             catch (Exception ex)
             {

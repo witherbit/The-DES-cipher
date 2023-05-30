@@ -72,6 +72,9 @@
     <Compile Include="BlockWindow.xaml.cs">
       <DependentUpon>BlockWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DesProgress.xaml.cs">
+      <DependentUpon>DesProgress.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DES\Block.cs" />
     <Compile Include="FilePage.xaml.cs">
       <DependentUpon>FilePage.xaml</DependentUpon>
@@ -93,6 +96,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BlockWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DesProgress.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

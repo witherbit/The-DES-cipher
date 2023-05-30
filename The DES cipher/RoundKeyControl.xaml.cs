@@ -29,6 +29,7 @@ namespace The_DES_cipher
             rD0.Text = $"D{key.Round - 1}";
             rC.Text = $"<<{Tables.Shift[key.Round-1]} => C{key.Round}";
             rD.Text = $"<<{Tables.Shift[key.Round - 1]} => D{key.Round}";
+            rCD.Text = $"CD{key.Round}";
             rPC2.Text = $"PC2 [K{key.Round}]";
             if (key.Round == 16)
             {
